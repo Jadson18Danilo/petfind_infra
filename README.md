@@ -18,6 +18,16 @@ Este diretório centraliza a orquestração Docker do monorepo (`frontend` + `ba
 
 > Execute todos os comandos abaixo dentro de `petfind_infra`.
 
+### Porta do backend (evita conflito)
+
+Por padrão, o backend Docker publica em `4001` (não `4000`) para não conflitar com um backend local em desenvolvimento.
+
+Se quiser trocar, crie um arquivo `.env` em `petfind_infra` com:
+
+```powershell
+BACKEND_HOST_PORT=4010
+```
+
 ### Subir tudo
 
 ```powershell
@@ -67,7 +77,7 @@ docker compose down -v
 ## Portas padrão
 
 - Frontend (Docker): `http://localhost:5424`
-- Backend: `http://localhost:4000`
+- Backend (Docker): `http://localhost:4001`
 - Adminer: `http://localhost:8080`
 - Postgres (host): `localhost:5433`
 
