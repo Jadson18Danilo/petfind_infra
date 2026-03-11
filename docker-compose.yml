@@ -40,10 +40,11 @@ services:
     build:
       context: ../petfind_frontend
       dockerfile: Dockerfile
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:${BACKEND_HOST_PORT:-4001}
     ports:
-      - "5424:3000"
+      - "${FRONTEND_HOST_PORT:-5424}:3000"
     environment:
-      NEXT_PUBLIC_API_URL: http://localhost:${BACKEND_HOST_PORT:-4001}
       NODE_ENV: production
     restart: unless-stopped
     depends_on:
